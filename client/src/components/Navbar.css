@@ -1,0 +1,25 @@
+.navbar {
+  background: #20232a;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__brand {
+  font-weight: 600;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar__links a {
+  color: #61dafb;
+}
+
+.navbar__links a.active {
+  text-decoration: underline;
+}
