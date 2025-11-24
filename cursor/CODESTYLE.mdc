@@ -1,0 +1,40 @@
+---
+alwaysApply: true
+---
+
+# CODESTYLE
+
+## General Rules
+
+-   Keep code simple and readable.
+-   Use small, focused functions and components.
+-   Avoid unnecessary abstractions.
+
+## Backend (.NET)
+
+-   Use ASP.NET Core Web API controllers.
+-   Organize code into:
+    -   Controllers
+    -   Services
+    -   Repositories
+    -   Models
+    -   DTOs
+-   Use constructor injection for dependencies.
+-   Async method naming: suffix with "Async".
+-   Use guard clauses to keep methods flat.
+
+## Frontend (React)
+
+-   Use functional components only.
+-   Use React hooks for state and effects.
+-   Organize code into:
+    -   `src/pages/`
+    -   `src/components/`
+    -   `src/api/`
+-   Use React Router for routing.
+-   Keep components small and single-purpose.
+
+## Git
+
+-   Commit in small, focused increments.
+-   Use clear, descriptive commit messages.
