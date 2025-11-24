@@ -9,6 +9,16 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ILibraryItemRepository, InMemoryLibraryItemRepository>();
 builder.Services.AddScoped<ILibraryItemService, LibraryItemService>();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -19,6 +29,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.MapControllers();
 
