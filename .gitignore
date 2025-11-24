@@ -17,5 +17,8 @@ dist/
 .DS_Store
 Thumbs.db
 
+# VS Code settings
+.vscode/
+
 # Cursor rules
 cursor/*.mdc
