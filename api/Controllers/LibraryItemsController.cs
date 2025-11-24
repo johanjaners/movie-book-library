@@ -18,8 +18,15 @@ public class LibraryItemsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<LibraryItemDto>>> GetAll([FromQuery] string? type)
     {
-        var items = await _service.GetAllAsync(type);
-        return Ok(items);
+        try
+        {
+            var items = await _service.GetAllAsync(type);
+            return Ok(items);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet("{id:guid}")]
@@ -37,14 +44,30 @@ public class LibraryItemsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<LibraryItemDto>> Create(CreateLibraryItemDto dto)
     {
-        var created = await _service.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        try
+        {
+            var created = await _service.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpPut("{id:guid}")]
     public async Task<ActionResult<LibraryItemDto>> Update(Guid id, UpdateLibraryItemDto dto)
     {
-        var updated = await _service.UpdateAsync(id, dto);
+        LibraryItemDto? updated;
+        try
+        {
+            updated = await _service.UpdateAsync(id, dto);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+
         if (updated is null)
         {
             return NotFound();
