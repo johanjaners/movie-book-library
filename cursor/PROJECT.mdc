@@ -58,7 +58,7 @@ Data may be stored:
 
 -   Framework: React
 -   Language: JavaScript
--   Tooling: Vite (recommended) or Create React App
+-   Tooling: Vite (React template, JavaScript)
 -   Router: React Router
 -   Suggested structure:
     -   `src/pages/` – page-level components (list, detail, form)
