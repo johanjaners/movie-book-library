@@ -16,19 +16,32 @@ const ItemFormPage = () => {
   const navigate = useNavigate()
   const isEdit = Boolean(id)
   const [form, setForm] = useState(emptyForm)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLoading, setIsLoading] = useState(isEdit)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     if (!isEdit) return
-    libraryApi.getById(id).then((data) => {
-      setForm({
-        title: data.title ?? '',
-        type: data.type ?? 'movie',
-        year: data.year ?? '',
-        status: data.status ?? '',
-        rating: data.rating ?? '',
-        notes: data.notes ?? '',
-      })
-    })
+
+    const load = async () => {
+      try {
+        const data = await libraryApi.getById(id)
+        setForm({
+          title: data.title ?? '',
+          type: data.type ?? 'movie',
+          year: data.year ?? '',
+          status: data.status ?? '',
+          rating: data.rating ?? '',
+          notes: data.notes ?? '',
+        })
+      } catch (err) {
+        setError('Failed to load item details.')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    load()
   }, [id, isEdit])
 
   const handleChange = (event) => {
@@ -38,25 +51,52 @@ const ItemFormPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    setError('')
+
+    if (!form.title.trim()) {
+      setError('Title is required.')
+      return
+    }
+
+    if (!form.type) {
+      setError('Type is required.')
+      return
+    }
+
+    setIsSubmitting(true)
 
     const payload = {
       ...form,
+      title: form.title.trim(),
+      type: form.type,
       year: form.year ? Number(form.year) : undefined,
       rating: form.rating ? Number(form.rating) : undefined,
+      status: form.status || undefined,
+      notes: form.notes || undefined,
     }
 
-    if (isEdit) {
-      await libraryApi.update(id, payload)
-    } else {
-      await libraryApi.create(payload)
+    try {
+      if (isEdit) {
+        await libraryApi.update(id, payload)
+      } else {
+        await libraryApi.create(payload)
+      }
+      navigate('/')
+    } catch (err) {
+      setError(err.message ?? 'Failed to save item')
+    } finally {
+      setIsSubmitting(false)
     }
+  }
 
-    navigate('/')
+  if (isLoading) {
+    return <p>Loading form...</p>
   }
 
   return (
     <div>
       <h2>{isEdit ? 'Edit' : 'Create'} Item</h2>
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit} className="item-form">
         <label>
           Title
@@ -71,7 +111,7 @@ const ItemFormPage = () => {
         </label>
         <label>
           Year
-          <input name="year" value={form.year} onChange={handleChange} type="number" />
+          <input name="year" value={form.year} onChange={handleChange} type="number" min="1900" max={new Date().getFullYear()} />
         </label>
         <label>
           Status
@@ -83,9 +123,16 @@ const ItemFormPage = () => {
         </label>
         <label>
           Notes
-          <textarea name="notes" value={form.notes} onChange={handleChange} />
+          <textarea name="notes" value={form.notes} onChange={handleChange} rows={3} />
         </label>
-        <button type="submit">Save</button>
+        <div className="item-detail__actions">
+          <button type="button" onClick={() => navigate(-1)} disabled={isSubmitting}>
+            Cancel
+          </button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Saving...' : 'Save'}
+          </button>
+        </div>
       </form>
     </div>
   )

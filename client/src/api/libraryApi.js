@@ -1,5 +1,23 @@
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:5000/api/libraryitems';
 
+const handleResponse = async (response, defaultMessage) => {
+  if (response.ok) {
+    return response.status === 204 ? null : response.json();
+  }
+
+  let message = defaultMessage;
+  try {
+    const text = await response.text();
+    if (text) {
+      message = text;
+    }
+  } catch (err) {
+    // ignore parsing failures; fall back to default
+  }
+
+  throw new Error(message);
+};
+
 export const getAll = async (params = {}) => {
   const url = new URL(BASE_URL);
   if (params.type) {
@@ -7,20 +25,12 @@ export const getAll = async (params = {}) => {
   }
 
   const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Failed to load items');
-  }
-
-  return response.json();
+  return handleResponse(response, 'Failed to load items');
 };
 
 export const getById = async (id) => {
   const response = await fetch(`${BASE_URL}/${id}`);
-  if (!response.ok) {
-    throw new Error('Item not found');
-  }
-
-  return response.json();
+  return handleResponse(response, 'Item not found');
 };
 
 export const create = async (data) => {
@@ -30,11 +40,7 @@ export const create = async (data) => {
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to create item');
-  }
-
-  return response.json();
+  return handleResponse(response, 'Failed to create item');
 };
 
 export const update = async (id, data) => {
@@ -44,11 +50,7 @@ export const update = async (id, data) => {
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to update item');
-  }
-
-  return response.json();
+  return handleResponse(response, 'Failed to update item');
 };
 
 export const remove = async (id) => {
@@ -56,7 +58,5 @@ export const remove = async (id) => {
     method: 'DELETE',
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to delete item');
-  }
+  return handleResponse(response, 'Failed to delete item');
 };

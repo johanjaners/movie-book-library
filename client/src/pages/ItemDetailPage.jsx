@@ -6,17 +6,57 @@ const ItemDetailPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [item, setItem] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    libraryApi.getById(id).then(setItem).catch(() => navigate('/'))
-  }, [id, navigate])
+    const load = async () => {
+      try {
+        const data = await libraryApi.getById(id)
+        setItem(data)
+        setError('')
+      } catch (err) {
+        setError('Unable to load the requested item.')
+      } finally {
+        setIsLoading(false)
+      }
+    }
 
-  if (!item) {
+    load()
+  }, [id])
+
+  const handleDelete = async () => {
+    if (!window.confirm('Delete this item? This cannot be undone.')) {
+      return
+    }
+
+    try {
+      await libraryApi.remove(id)
+      navigate('/')
+    } catch (err) {
+      setError(err.message ?? 'Failed to delete item')
+    }
+  }
+
+  if (isLoading) {
     return <p>Loading...</p>
   }
 
+  if (error) {
+    return (
+      <div>
+        <p className="error">{error}</p>
+        <button onClick={() => navigate('/')}>Back to list</button>
+      </div>
+    )
+  }
+
+  if (!item) {
+    return null
+  }
+
   return (
-    <div>
+    <div className="item-detail">
       <button onClick={() => navigate(-1)}>Back</button>
       <h2>{item.title}</h2>
       <p>Type: {item.type}</p>
@@ -24,12 +64,9 @@ const ItemDetailPage = () => {
       {item.status && <p>Status: {item.status}</p>}
       {item.rating && <p>Rating: {item.rating}</p>}
       {item.notes && <p>Notes: {item.notes}</p>}
-      <div>
+      <div className="item-detail__actions">
         <button onClick={() => navigate(`/items/${id}/edit`)}>Edit</button>
-        <button onClick={async () => {
-          await libraryApi.remove(id)
-          navigate('/')
-        }}>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
   )
