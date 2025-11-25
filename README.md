@@ -104,10 +104,9 @@ movie-book-library/
 
 ## Screenshots
 
-<!-- Add screenshots here -->
-![Library List Page](./screenshots/list-page.png)
-![Item Detail Page](./screenshots/detail-page.png)
-![Create/Edit Form](./screenshots/form-page.png)
+![Home Page](/screenshots/home-page.png)
+![Library Items](/screenshots/library-items.png)
+![Create Item](/screenshots/create-item.png)
 
 ## API Endpoints
 
