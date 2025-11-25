@@ -29,7 +29,8 @@ public class LibraryItemService : ILibraryItemService
             Year = dto.Year,
             Status = dto.Status,
             Rating = dto.Rating,
-            Notes = dto.Notes
+            Notes = dto.Notes,
+            CoverImageUrl = NormalizeCoverUrl(dto.CoverImageUrl)
         };
 
         var created = await _repository.CreateAsync(entity);
@@ -77,6 +78,7 @@ public class LibraryItemService : ILibraryItemService
         existing.Status = dto.Status;
         existing.Rating = dto.Rating;
         existing.Notes = dto.Notes;
+        existing.CoverImageUrl = NormalizeCoverUrl(dto.CoverImageUrl);
 
         await _repository.UpdateAsync(existing);
         return ToDto(existing);
@@ -119,6 +121,17 @@ public class LibraryItemService : ILibraryItemService
             Year = item.Year,
             Status = item.Status,
             Rating = item.Rating,
-            Notes = item.Notes
+            Notes = item.Notes,
+            CoverImageUrl = item.CoverImageUrl
         };
+
+    private static string? NormalizeCoverUrl(string? url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            return null;
+        }
+
+        return url.Trim();
+    }
 }
