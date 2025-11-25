@@ -40,9 +40,11 @@ app.UseCors();
 
 app.MapControllers();
 
+// Ensure database is created and migrations are applied
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<LibraryContext>();
+    context.Database.Migrate();
 
     if (!context.LibraryItems.Any())
     {
