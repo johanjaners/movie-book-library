@@ -20,5 +20,8 @@ Thumbs.db
 # VS Code settings
 .vscode/
 
+# Database files
+api/library.db
+
 # Cursor rules
 cursor/*.mdc
