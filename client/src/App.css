@@ -57,6 +57,12 @@ button {
     background: #b91c1c;
 }
 
+.container {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
 .panel {
     background: #fff;
     border-radius: 1rem;
@@ -66,7 +72,10 @@ button {
 }
 
 .library-list-section {
-    scroll-margin-top: 2rem;
+    scroll-margin-top: 5rem;
+    margin-top: -2rem;
+    position: relative;
+    z-index: 10;
 }
 
 .library-page {
