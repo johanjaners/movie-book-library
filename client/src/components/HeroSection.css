@@ -106,10 +106,19 @@
     padding: clamp(1.5rem, 4vw, 2.5rem);
   }
 
+  .hero__heading {
+    font-size: 2rem;
+  }
+
+  .hero__subtext {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
   .hero__button {
     width: auto !important;
     max-width: 280px;
-    font-size: 0.65rem;
+    font-size: 1.1rem;
   }
 }
 

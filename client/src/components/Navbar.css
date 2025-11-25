@@ -56,3 +56,13 @@
 .navbar__links a.active {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .navbar__brand {
+    font-size: 1.1rem;
+  }
+
+  .navbar__links a {
+    font-size: 1.1rem;
+  }
+}
