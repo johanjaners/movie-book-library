@@ -23,5 +23,11 @@ Thumbs.db
 # Database files
 api/library.db
 
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
+
 # Cursor rules
 cursor/*.mdc
