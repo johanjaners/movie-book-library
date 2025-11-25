@@ -122,12 +122,6 @@ button {
     color: #475569;
 }
 
-.library-page__actions {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-}
-
 .library-stats {
     margin: 0.5rem 0 0;
     font-weight: 500;
@@ -139,10 +133,14 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 1.25rem;
-    align-items: flex-end;
+    align-items: center;
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #e2e8f0;
+}
+
+.library-page__add-button {
+    margin-left: 1rem;
 }
 
 .input-control {

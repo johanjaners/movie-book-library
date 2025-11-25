@@ -81,11 +81,6 @@ const LibraryListPage = () => {
                   Total: {stats.total} items — {stats.movies} movies, {stats.books} books
                 </p>
               </div>
-              <div className="library-page__actions">
-                <button className="btn btn-primary btn-sm" onClick={() => navigate('/items/new')}>
-                  Add Item
-                </button>
-              </div>
             </div>
 
             <div className="library-page__filters">
@@ -116,6 +111,10 @@ const LibraryListPage = () => {
                   <option value="rating-desc">Rating (Highest first)</option>
                 </select>
               </label>
+
+              <button className="btn btn-primary btn-sm library-page__add-button" onClick={() => navigate('/items/new')}>
+                Add Item
+              </button>
             </div>
 
             {isLoading && <p>Loading items...</p>}
