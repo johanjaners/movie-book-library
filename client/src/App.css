@@ -65,6 +65,10 @@ button {
     border: 1px solid #e2e8f0;
 }
 
+.library-list-section {
+    scroll-margin-top: 2rem;
+}
+
 .library-page {
     display: flex;
     flex-direction: column;

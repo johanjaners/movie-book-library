@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as libraryApi from '../api/libraryApi'
 import ItemCard from '../components/ItemCard'
+import HeroSection from '../components/HeroSection'
 
 const LibraryListPage = () => {
   const [items, setItems] = useState([])
@@ -11,6 +12,7 @@ const LibraryListPage = () => {
   const [searchText, setSearchText] = useState('')
   const [sortOption, setSortOption] = useState('title')
   const navigate = useNavigate()
+  const libraryListRef = useRef(null)
 
   const loadItems = useCallback(async () => {
     setIsLoading(true)
@@ -62,8 +64,14 @@ const LibraryListPage = () => {
     return { total, movies, books }
   }, [items])
 
+  const handleBrowseClick = useCallback(() => {
+    libraryListRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
+
   return (
-    <section className="library-page panel">
+    <>
+      <HeroSection onBrowseClick={handleBrowseClick} />
+      <section id="library-list" ref={libraryListRef} className="library-page panel library-list-section">
       <div className="library-page__header">
         <div>
           <h2>Library Items</h2>
@@ -121,6 +129,7 @@ const LibraryListPage = () => {
         ))}
       </div>
     </section>
+    </>
   )
 }
 
