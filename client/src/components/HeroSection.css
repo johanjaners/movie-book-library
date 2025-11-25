@@ -5,8 +5,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
+  max-width: 100%;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
 }
 
