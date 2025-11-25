@@ -9,6 +9,12 @@ body {
     background: #f5f5f5;
 }
 
+@media (min-width: 1440px) {
+    html {
+        font-size: 15px;
+    }
+}
+
 .library-section-background {
     background: linear-gradient(to bottom, #f5f5f5 0%, #fafafa 100%);
     min-height: 100vh;
@@ -159,40 +165,40 @@ button {
 
 .item-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    column-gap: 1.5rem;
-    row-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    column-gap: 1.25rem;
+    row-gap: 1.5rem;
 }
 
 @media (max-width: 640px) {
     .item-list {
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 1rem;
-        row-gap: 1.5rem;
+        column-gap: 0.75rem;
+        row-gap: 1rem;
     }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
     .item-list {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        column-gap: 1.25rem;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        column-gap: 1rem;
+        row-gap: 1.25rem;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .item-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        column-gap: 1.5rem;
         row-gap: 1.75rem;
     }
 }
 
-@media (min-width: 1025px) and (max-width: 1920px) {
+@media (min-width: 1441px) {
     .item-list {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        column-gap: 1.75rem;
-        row-gap: 2.25rem;
-    }
-}
-
-@media (min-width: 1921px) {
-    .item-list {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         column-gap: 2rem;
-        row-gap: 2.5rem;
+        row-gap: 2.25rem;
     }
 }
 
