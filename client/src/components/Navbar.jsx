@@ -14,11 +14,15 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleHomeClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__brand">Movie / Book Library</div>
       <nav className="navbar__links">
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" onClick={handleHomeClick}>Home</NavLink>
         <NavLink to="/items/new">Add Item</NavLink>
       </nav>
     </header>
