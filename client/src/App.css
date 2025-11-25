@@ -172,7 +172,7 @@ button {
 
 .item-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 280px));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 240px));
     justify-content: center;
     column-gap: 1.25rem;
     row-gap: 1.5rem;
@@ -180,7 +180,7 @@ button {
 
 @media (max-width: 640px) {
     .item-list {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 280px));
+        grid-template-columns: repeat(auto-fit, minmax(140px, 240px));
         column-gap: 0.75rem;
         row-gap: 1rem;
     }
@@ -188,7 +188,7 @@ button {
 
 @media (min-width: 641px) and (max-width: 1024px) {
     .item-list {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 280px));
+        grid-template-columns: repeat(auto-fit, minmax(160px, 240px));
         column-gap: 1rem;
         row-gap: 1.25rem;
     }
@@ -196,7 +196,7 @@ button {
 
 @media (min-width: 1025px) and (max-width: 1440px) {
     .item-list {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
         column-gap: 1.5rem;
         row-gap: 1.75rem;
     }
@@ -204,7 +204,7 @@ button {
 
 @media (min-width: 1441px) {
     .item-list {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 240px));
         column-gap: 2rem;
         row-gap: 2.25rem;
     }
