@@ -56,19 +56,52 @@ const ItemDetailPage = () => {
   }
 
   return (
-    <div className="item-detail">
-      <button onClick={() => navigate(-1)}>Back</button>
-      <h2>{item.title}</h2>
-      <p>Type: {item.type}</p>
-      {item.year && <p>Year: {item.year}</p>}
-      {item.status && <p>Status: {item.status}</p>}
-      {item.rating && <p>Rating: {item.rating}</p>}
-      {item.notes && <p>Notes: {item.notes}</p>}
-      <div className="item-detail__actions">
-        <button onClick={() => navigate(`/items/${id}/edit`)}>Edit</button>
-        <button onClick={handleDelete}>Delete</button>
+    <section className="item-detail panel">
+      <div className="item-detail__heading">
+        <button className="btn btn-secondary" onClick={() => navigate(-1)}>
+          Back
+        </button>
+        <h2>{item.title}</h2>
       </div>
-    </div>
+      <div className="item-detail__metadata">
+        <div>
+          <span className="label">Type</span>
+          <span className="value">{item.type}</span>
+        </div>
+        {item.year && (
+          <div>
+            <span className="label">Year</span>
+            <span className="value">{item.year}</span>
+          </div>
+        )}
+        {item.status && (
+          <div>
+            <span className="label">Status</span>
+            <span className="value">{item.status}</span>
+          </div>
+        )}
+        {item.rating && (
+          <div>
+            <span className="label">Rating</span>
+            <span className="value">{item.rating}/5</span>
+          </div>
+        )}
+      </div>
+      {item.notes && (
+        <div className="item-detail__notes">
+          <span className="label">Notes</span>
+          <p>{item.notes}</p>
+        </div>
+      )}
+      <div className="item-detail__actions">
+        <button className="btn" onClick={() => navigate(`/items/${id}/edit`)}>
+          Edit
+        </button>
+        <button className="btn btn-danger" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
+    </section>
   )
 }
 
