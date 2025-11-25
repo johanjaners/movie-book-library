@@ -46,7 +46,8 @@ using (var scope = app.Services.CreateScope())
 
     if (!context.LibraryItems.Any())
     {
-        context.LibraryItems.AddRange(
+        var seedItems = new[]
+        {
             new LibraryItem
             {
                 Title = "Inception",
@@ -64,8 +65,61 @@ using (var scope = app.Services.CreateScope())
                 Status = "reading",
                 Rating = 4,
                 Notes = "Re-reading chapter on craftsmanship."
-            });
+            },
+            new LibraryItem
+            {
+                Title = "Arrival",
+                Type = "movie",
+                Year = 2016,
+                Status = "unwatched",
+                Rating = 0,
+                Notes = "Next up on the sci-fi list."
+            },
+            new LibraryItem
+            {
+                Title = "Clean Code",
+                Type = "book",
+                Year = 2008,
+                Status = "finished",
+                Rating = 5,
+                Notes = "Great ref for refactoring sessions."
+            },
+            new LibraryItem
+            {
+                Title = "Interstellar",
+                Type = "movie",
+                Year = 2014,
+                Status = "watching",
+                Rating = 4
+            },
+            new LibraryItem
+            {
+                Title = "Atomic Habits",
+                Type = "book",
+                Year = 2018,
+                Status = "unread",
+                Rating = 0,
+                Notes = "Recommended by team retro."
+            },
+            new LibraryItem
+            {
+                Title = "Blade Runner 2049",
+                Type = "movie",
+                Year = 2017,
+                Status = "watched",
+                Rating = 5
+            },
+            new LibraryItem
+            {
+                Title = "Deep Work",
+                Type = "book",
+                Year = 2016,
+                Status = "reading",
+                Rating = 3
+            }
+        };
 
+        context.LibraryItems.AddRange(seedItems);
         context.SaveChanges();
     }
 }
