@@ -71,7 +71,8 @@ const LibraryListPage = () => {
   return (
     <>
       <HeroSection onBrowseClick={handleBrowseClick} />
-      <section id="library-list" ref={libraryListRef} className="library-page panel library-list-section">
+      <div className="container" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+        <section id="library-list" ref={libraryListRef} className="library-page panel library-list-section">
       <div className="library-page__header">
         <div>
           <h2>Library Items</h2>
@@ -129,6 +130,7 @@ const LibraryListPage = () => {
         ))}
       </div>
     </section>
+      </div>
     </>
   )
 }
