@@ -116,6 +116,33 @@ movie-book-library/
 ![Library Items](client/public/screenshots/library-items.png)
 ![Create Item](client/public/screenshots/create-item.png)
 
+## Deployment
+
+This project is fully deployed and live:
+
+### 🌐 Frontend (Vercel)
+
+The React/Vite client is deployed on Vercel.
+
+**Live URL:** https://movie-book-library.vercel.app
+
+### 🛠️ Backend API (Render)
+
+The ASP.NET Core Web API is containerized with Docker and deployed on Render.
+
+**API Base URL:** https://movie-book-library.onrender.com  
+(used via `VITE_API_URL` environment variable)
+
+### Infrastructure Summary
+
+- **Frontend:** Vercel, built from the `client` folder using Vite
+
+- **Backend:** Docker image deployed on Render
+
+- **Database:** SQLite + EF Core migrations (auto-applied on container startup)
+
+- **Environment Variables:** VITE_API_URL configured in Vercel
+
 ## API Endpoints
 
 -   `GET /api/libraryitems` - Get all items (optional `?type=movie` or `?type=book` filter)
