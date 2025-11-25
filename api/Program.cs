@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using MovieBookLibrary.Api.Data;
 using MovieBookLibrary.Api.Repositories;
 using MovieBookLibrary.Api.Services;
 
@@ -6,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<LibraryContext>(
+    options => options.UseSqlite("Data Source=library.db"));
 
 builder.Services.AddSingleton<ILibraryItemRepository, InMemoryLibraryItemRepository>();
 builder.Services.AddScoped<ILibraryItemService, LibraryItemService>();
