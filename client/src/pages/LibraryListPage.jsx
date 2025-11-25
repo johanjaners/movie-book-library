@@ -71,65 +71,65 @@ const LibraryListPage = () => {
   return (
     <>
       <HeroSection onBrowseClick={handleBrowseClick} />
-      <div className="container" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-        <section id="library-list" ref={libraryListRef} className="library-page panel library-list-section">
-      <div className="library-page__header">
-        <div>
-          <h2>Library Items</h2>
-          <p>Browse and manage movies and books.</p>
+      <div className="library-section-background">
+        <div className="container" style={{ paddingTop: '5rem', paddingBottom: '4rem' }}>
+          <section id="library-list" ref={libraryListRef} className="library-list-section">
+            <div className="library-page__header">
+              <div>
+                <h2>Library Items</h2>
+                <p className="library-stats">
+                  Total: {stats.total} items — {stats.movies} movies, {stats.books} books
+                </p>
+              </div>
+              <div className="library-page__actions">
+                <button className="btn btn-primary" onClick={() => navigate('/items/new')}>
+                  Add Item
+                </button>
+              </div>
+            </div>
+
+            <div className="library-page__filters">
+              <label className="input-control">
+                <span>Type</span>
+                <select value={typeFilter} onChange={(event) => setTypeFilter(event.target.value)}>
+                  <option value="">All</option>
+                  <option value="movie">Movies</option>
+                  <option value="book">Books</option>
+                </select>
+              </label>
+
+              <label className="input-control input-control--grow">
+                <span>Search</span>
+                <input
+                  type="text"
+                  value={searchText}
+                  placeholder="Search by title"
+                  onChange={(event) => setSearchText(event.target.value)}
+                />
+              </label>
+
+              <label className="input-control">
+                <span>Sort by</span>
+                <select value={sortOption} onChange={(event) => setSortOption(event.target.value)}>
+                  <option value="title">Title (A–Z)</option>
+                  <option value="year-desc">Year (Newest first)</option>
+                  <option value="rating-desc">Rating (Highest first)</option>
+                </select>
+              </label>
+            </div>
+
+            {isLoading && <p>Loading items...</p>}
+            {error && <p className="error">{error}</p>}
+
+            {!isLoading && !error && filteredItems.length === 0 && <p>No items match your filters.</p>}
+
+            <div className="item-list">
+              {filteredItems.map((item) => (
+                <ItemCard key={item.id} item={item} onSelect={(id) => navigate(`/items/${id}`)} />
+              ))}
+            </div>
+          </section>
         </div>
-        <div className="library-page__actions">
-          <button className="btn btn-primary" onClick={() => navigate('/items/new')}>
-            Add Item
-          </button>
-        </div>
-      </div>
-
-      <p className="library-stats">
-        Total: {stats.total} items — {stats.movies} movies, {stats.books} books
-      </p>
-
-      <div className="library-page__controls">
-        <label className="input-control">
-          <span>Type</span>
-          <select value={typeFilter} onChange={(event) => setTypeFilter(event.target.value)}>
-            <option value="">All</option>
-            <option value="movie">Movies</option>
-            <option value="book">Books</option>
-          </select>
-        </label>
-
-        <label className="input-control input-control--grow">
-          <span>Search</span>
-          <input
-            type="text"
-            value={searchText}
-            placeholder="Search by title"
-            onChange={(event) => setSearchText(event.target.value)}
-          />
-        </label>
-
-        <label className="input-control">
-          <span>Sort by</span>
-          <select value={sortOption} onChange={(event) => setSortOption(event.target.value)}>
-            <option value="title">Title (A–Z)</option>
-            <option value="year-desc">Year (Newest first)</option>
-            <option value="rating-desc">Rating (Highest first)</option>
-          </select>
-        </label>
-      </div>
-
-      {isLoading && <p>Loading items...</p>}
-      {error && <p className="error">{error}</p>}
-
-      {!isLoading && !error && filteredItems.length === 0 && <p>No items match your filters.</p>}
-
-      <div className="item-list">
-        {filteredItems.map((item) => (
-          <ItemCard key={item.id} item={item} onSelect={(id) => navigate(`/items/${id}`)} />
-        ))}
-      </div>
-    </section>
       </div>
     </>
   )
