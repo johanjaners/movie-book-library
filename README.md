@@ -147,12 +147,12 @@ movie-book-library/
 │   ├── Models/            # Domain entities
 │   ├── Repositories/      # Data access layer
 │   └── Services/          # Business logic
-├── client/                # React frontend
-│   ├── src/
-│   │   ├── api/          # API helper functions
-│   │   ├── components/   # Reusable UI components
-│   │   └── pages/        # Page components
-└── cursor/                # Project documentation
+└── client/                # React frontend
+     └── src/
+        ├── api/          # API helper functions
+        ├── components/   # Reusable UI components
+        └── pages/        # Page components
+
 ```
 
 ## API Endpoints
