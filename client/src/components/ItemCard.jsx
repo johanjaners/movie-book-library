@@ -6,6 +6,11 @@ const ItemCard = ({ item, onSelect }) => {
   const showImage = Boolean(item.coverImageUrl) && !imageError
   const initial = item.title?.[0]?.toUpperCase() ?? '?'
 
+  // Debug: log coverImageUrl to verify it's being received
+  if (item.coverImageUrl) {
+    console.log(`[ItemCard] ${item.title}: coverImageUrl =`, item.coverImageUrl)
+  }
+
   return (
     <button className="item-card" onClick={() => onSelect?.(item.id)}>
       <div className="item-card__media">
