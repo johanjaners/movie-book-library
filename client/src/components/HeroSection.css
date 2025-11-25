@@ -85,6 +85,9 @@
   padding: 0.5rem 1.25rem;
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
   transition: transform 150ms ease, box-shadow 150ms ease;
+  display: inline-block;
+  max-width: 280px;
+  width: auto;
 }
 
 .hero__button:hover {
@@ -98,7 +101,7 @@
   }
 
   .hero__content {
-    text-align: left;
+    text-align: center;
     padding: clamp(1.5rem, 4vw, 2.5rem);
   }
 }

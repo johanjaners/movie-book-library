@@ -72,7 +72,7 @@ const LibraryListPage = () => {
     <>
       <HeroSection onBrowseClick={handleBrowseClick} />
       <div className="library-section-background">
-        <div className="container" style={{ paddingTop: '5rem', paddingBottom: '4rem' }}>
+        <div className="container" style={{ paddingTop: '8rem', paddingBottom: '4rem' }}>
           <section id="library-list" ref={libraryListRef} className="library-list-section">
             <div className="library-page__header">
               <div>
@@ -82,7 +82,7 @@ const LibraryListPage = () => {
                 </p>
               </div>
               <div className="library-page__actions">
-                <button className="btn btn-primary" onClick={() => navigate('/items/new')}>
+                <button className="btn btn-primary btn-sm" onClick={() => navigate('/items/new')}>
                   Add Item
                 </button>
               </div>
