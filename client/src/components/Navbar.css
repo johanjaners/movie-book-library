@@ -21,6 +21,7 @@
 
 .navbar__brand {
   font-weight: 600;
+  font-size: 0.75rem;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: text-shadow 200ms ease;
 }
@@ -36,6 +37,7 @@
 
 .navbar__links a {
   color: #fff;
+  font-size: 0.75rem;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: color 200ms ease, text-shadow 200ms ease;
 }
