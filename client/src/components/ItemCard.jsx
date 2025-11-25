@@ -1,12 +1,35 @@
+import { useState } from 'react'
 import './ItemCard.css'
 
 const ItemCard = ({ item, onSelect }) => {
+  const [imageError, setImageError] = useState(false)
+  const showImage = Boolean(item.coverImageUrl) && !imageError
+  const initial = item.title?.[0]?.toUpperCase() ?? '?'
+
   return (
     <button className="item-card" onClick={() => onSelect?.(item.id)}>
-      <h3>{item.title}</h3>
-      <p>Type: {item.type}</p>
-      {item.year && <p>Year: {item.year}</p>}
-      {item.status && <p>Status: {item.status}</p>}
+      <div className="item-card__media">
+        {showImage ? (
+          <img
+            src={item.coverImageUrl}
+            alt={`${item.title} cover`}
+            loading="lazy"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="item-card__placeholder" aria-hidden="true">
+            {initial}
+          </div>
+        )}
+      </div>
+      <div className="item-card__content">
+        <h3>{item.title}</h3>
+        <p className="item-card__meta">
+          <span className="pill">{item.type}</span>
+          {item.year && <span>{item.year}</span>}
+        </p>
+        {item.status && <p className="item-card__status">{item.status}</p>}
+      </div>
     </button>
   )
 }

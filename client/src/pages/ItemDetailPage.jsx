@@ -8,6 +8,7 @@ const ItemDetailPage = () => {
   const [item, setItem] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
+  const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
     const load = async () => {
@@ -15,6 +16,7 @@ const ItemDetailPage = () => {
         const data = await libraryApi.getById(id)
         setItem(data)
         setError('')
+        setImageError(false)
       } catch (err) {
         setError('Unable to load the requested item.')
       } finally {
@@ -55,6 +57,9 @@ const ItemDetailPage = () => {
     return null
   }
 
+  const showImage = Boolean(item.coverImageUrl) && !imageError
+  const initial = item.title?.[0]?.toUpperCase() ?? '?'
+
   return (
     <section className="item-detail panel">
       <div className="item-detail__heading">
@@ -63,43 +68,60 @@ const ItemDetailPage = () => {
         </button>
         <h2>{item.title}</h2>
       </div>
-      <div className="item-detail__metadata">
-        <div>
-          <span className="label">Type</span>
-          <span className="value">{item.type}</span>
+      <div className="item-detail__layout">
+        <div className="item-detail__media">
+          {showImage ? (
+            <img
+              src={item.coverImageUrl}
+              alt={`${item.title} cover`}
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="item-detail__placeholder" aria-hidden="true">
+              {initial}
+            </div>
+          )}
         </div>
-        {item.year && (
-          <div>
-            <span className="label">Year</span>
-            <span className="value">{item.year}</span>
+        <div className="item-detail__body">
+          <div className="item-detail__metadata">
+            <div>
+              <span className="label">Type</span>
+              <span className="value">{item.type}</span>
+            </div>
+            {item.year && (
+              <div>
+                <span className="label">Year</span>
+                <span className="value">{item.year}</span>
+              </div>
+            )}
+            {item.status && (
+              <div>
+                <span className="label">Status</span>
+                <span className="value">{item.status}</span>
+              </div>
+            )}
+            {item.rating && (
+              <div>
+                <span className="label">Rating</span>
+                <span className="value">{item.rating}/5</span>
+              </div>
+            )}
           </div>
-        )}
-        {item.status && (
-          <div>
-            <span className="label">Status</span>
-            <span className="value">{item.status}</span>
+          {item.notes && (
+            <div className="item-detail__notes">
+              <span className="label">Notes</span>
+              <p>{item.notes}</p>
+            </div>
+          )}
+          <div className="item-detail__actions">
+            <button className="btn" onClick={() => navigate(`/items/${id}/edit`)}>
+              Edit
+            </button>
+            <button className="btn btn-danger" onClick={handleDelete}>
+              Delete
+            </button>
           </div>
-        )}
-        {item.rating && (
-          <div>
-            <span className="label">Rating</span>
-            <span className="value">{item.rating}/5</span>
-          </div>
-        )}
-      </div>
-      {item.notes && (
-        <div className="item-detail__notes">
-          <span className="label">Notes</span>
-          <p>{item.notes}</p>
         </div>
-      )}
-      <div className="item-detail__actions">
-        <button className="btn" onClick={() => navigate(`/items/${id}/edit`)}>
-          Edit
-        </button>
-        <button className="btn btn-danger" onClick={handleDelete}>
-          Delete
-        </button>
       </div>
     </section>
   )

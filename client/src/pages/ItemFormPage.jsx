@@ -9,6 +9,7 @@ const emptyForm = {
   status: '',
   rating: '',
   notes: '',
+  coverImageUrl: '',
 }
 
 const ItemFormPage = () => {
@@ -33,6 +34,7 @@ const ItemFormPage = () => {
           status: data.status ?? '',
           rating: data.rating ?? '',
           notes: data.notes ?? '',
+          coverImageUrl: data.coverImageUrl ?? '',
         })
       } catch (err) {
         setError('Failed to load item details.')
@@ -73,6 +75,7 @@ const ItemFormPage = () => {
       rating: form.rating ? Number(form.rating) : undefined,
       status: form.status || undefined,
       notes: form.notes || undefined,
+      coverImageUrl: form.coverImageUrl?.trim() || undefined,
     }
 
     try {
@@ -135,6 +138,16 @@ const ItemFormPage = () => {
         <label>
           Notes
           <textarea name="notes" value={form.notes} onChange={handleChange} rows={3} placeholder="Optional notes" />
+        </label>
+        <label>
+          Cover image URL
+          <input
+            name="coverImageUrl"
+            value={form.coverImageUrl}
+            onChange={handleChange}
+            placeholder="https://example.com/poster.jpg"
+            type="url"
+          />
         </label>
         <div className="form-actions">
           <button className="btn btn-secondary" type="button" onClick={() => navigate(-1)} disabled={isSubmitting}>
