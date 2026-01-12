@@ -32,10 +32,10 @@ The ASP.NET Core Web API is containerized with Docker and deployed on Render.
 -   **API:** [https://movie-book-library.onrender.com](https://movie-book-library.onrender.com)
 
 ## Screenshots
+[client/public/screenshots/]
 
 ![Home Page](client/public/screenshots/home-page.png)
 ![Library Items](client/public/screenshots/library-items.png)
-![Create Item](client/public/screenshots/create-item.png)
 
 ## Tech Stack
 
