@@ -1,43 +1,47 @@
+```markdown
 # Movie / Book Library
 
 A full-stack web application for tracking your personal collection of movies and books. Manage your library with ease, add ratings and notes, and keep track of what you've watched or read.
 
-## Deployment
+## 🚀 Live Demo
 
-This project is fully deployed and live:
+-   **Frontend:** [https://movie-book-library.vercel.app](https://movie-book-library.vercel.app)
+-   **API:** [https://movie-book-library.onrender.com](https://movie-book-library.onrender.com)
 
-### 🌐 Frontend (Vercel)
+## 🏗️ Architecture
 
-The React/Vite client is deployed on Vercel.
+### Project Structure
 
-**Live URL:** https://movie-book-library.vercel.app
+```
+movie-book-library/
+├── api/                    # .NET Web API backend
+│   ├── Controllers/        # API endpoints
+│   ├── Data/              # DbContext
+│   ├── Dtos/              # Data transfer objects
+│   ├── Migrations/        # EF Core migrations
+│   ├── Models/            # Domain entities
+│   ├── Repositories/      # Data access layer
+│   └── Services/          # Business logic
+└── client/                # React frontend
+     └── src/
+        ├── api/          # API helper functions
+        ├── components/   # Reusable UI components
+        └── pages/        # Page components
+```
 
-### 🛠️ Backend API (Render)
-
-The ASP.NET Core Web API is containerized with Docker and deployed on Render.
-
-**API Base URL:** https://movie-book-library.onrender.com  
-(used via `VITE_API_URL` environment variable)
-
-### Infrastructure Summary
+### Infrastructure
 
 -   **Frontend:** Vercel, built from the `client` folder using Vite
 -   **Backend:** Docker image deployed on Render
 -   **Database:** SQLite + EF Core migrations (auto-applied on container startup)
 -   **Environment Variables:** VITE_API_URL configured in Vercel
 
-## Live Demo
-
--   **Frontend:** [https://movie-book-library.vercel.app](https://movie-book-library.vercel.app)
--   **API:** [https://movie-book-library.onrender.com](https://movie-book-library.onrender.com)
-
-## Screenshots
-[client/public/screenshots/]
+## 📸 Screenshots
 
 ![Home Page](client/public/screenshots/home-page.png)
 ![Library Items](client/public/screenshots/library-items.png)
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 ### Backend
 
@@ -53,17 +57,7 @@ The ASP.NET Core Web API is containerized with Docker and deployed on Render.
 -   **React Router** - Client-side routing
 -   **JavaScript** - No TypeScript (keeping it simple)
 
-## Project Highlights
-
--   **Dockerized Backend** - Production-ready containerization with multi-stage builds
--   **Deployed Infrastructure** - Fully deployed frontend (Vercel) and backend (Render)
--   **Modern Frontend** - React 19 with Vite for fast development and optimized builds
--   **Entity Framework Core** - Robust ORM with automatic migrations and database seeding
--   **RESTful API** - Clean, well-structured API with Swagger documentation
--   **Responsive Design** - Mobile-first, modern UI with smooth animations and transitions
--   **Environment Configuration** - Flexible API URL configuration via environment variables
-
-## Features
+## ✨ Features
 
 -   **Full CRUD Operations**: Create, read, update, and delete library items (movies and books)
 -   **Search & Filter**: Search items by title and filter by type (movie/book)
@@ -74,7 +68,25 @@ The ASP.NET Core Web API is containerized with Docker and deployed on Render.
 -   **Seeded Data**: Pre-populated with sample items to get you started
 -   **Responsive Design**: Clean, modern UI that works on desktop and mobile devices
 
-## Getting Started
+## 🎯 Project Highlights
+
+-   **Dockerized Backend** - Production-ready containerization with multi-stage builds
+-   **Deployed Infrastructure** - Fully deployed frontend (Vercel) and backend (Render)
+-   **Modern Frontend** - React 19 with Vite for fast development and optimized builds
+-   **Entity Framework Core** - Robust ORM with automatic migrations and database seeding
+-   **RESTful API** - Clean, well-structured API with Swagger documentation
+-   **Responsive Design** - Mobile-first, modern UI with smooth animations and transitions
+-   **Environment Configuration** - Flexible API URL configuration via environment variables
+
+## 🔌 API Endpoints
+
+-   `GET /api/libraryitems` - Get all items (optional `?type=movie` or `?type=book` filter)
+-   `GET /api/libraryitems/{id}` - Get item by ID
+-   `POST /api/libraryitems` - Create new item
+-   `PUT /api/libraryitems/{id}` - Update existing item
+-   `DELETE /api/libraryitems/{id}` - Delete item
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -135,43 +147,6 @@ The ASP.NET Core Web API is containerized with Docker and deployed on Render.
 
 4. Open your browser and navigate to the URL shown in the terminal (typically `http://localhost:5173`)
 
-### Project Structure
-
-```
-movie-book-library/
-├── api/                    # .NET Web API backend
-│   ├── Controllers/        # API endpoints
-│   ├── Data/              # DbContext
-│   ├── Dtos/              # Data transfer objects
-│   ├── Migrations/        # EF Core migrations
-│   ├── Models/            # Domain entities
-│   ├── Repositories/      # Data access layer
-│   └── Services/          # Business logic
-└── client/                # React frontend
-     └── src/
-        ├── api/          # API helper functions
-        ├── components/   # Reusable UI components
-        └── pages/        # Page components
-
-```
-
-## API Endpoints
-
--   `GET /api/libraryitems` - Get all items (optional `?type=movie` or `?type=book` filter)
--   `GET /api/libraryitems/{id}` - Get item by ID
--   `POST /api/libraryitems` - Create new item
--   `PUT /api/libraryitems/{id}` - Update existing item
--   `DELETE /api/libraryitems/{id}` - Delete item
-
-## Future Improvements
-
--   **User Authentication**: Add user accounts and personal libraries
--   **Import/Export**: Export library data to CSV or JSON
--   **Advanced Filtering**: Filter by status, rating, year range, or custom tags
--   **Bulk Operations**: Select and delete multiple items at once
--   **Image Upload**: Upload custom cover images instead of URLs
--   **Reading/Watching Progress**: Track progress for books (pages read) and movies (time watched)
-
-## License
+## 📄 License
 
 This project is open source and available for personal and educational use.
