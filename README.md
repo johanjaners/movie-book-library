@@ -53,7 +53,7 @@ movie-book-library/
 -   **React 19** - UI library
 -   **Vite** - Build tool and dev server
 -   **React Router** - Client-side routing
--   **JavaScript** - No TypeScript (keeping it simple)
+-   **JavaScript** - Frontend implementation
 
 ## ✨ Features
 
