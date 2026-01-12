@@ -1,4 +1,3 @@
-```markdown
 # Movie / Book Library
 
 A full-stack web application for tracking your personal collection of movies and books. Manage your library with ease, add ratings and notes, and keep track of what you've watched or read.
@@ -11,7 +10,6 @@ A full-stack web application for tracking your personal collection of movies and
 ## 🏗️ Architecture
 
 ### Project Structure
-
 ```
 movie-book-library/
 ├── api/                    # .NET Web API backend
@@ -97,16 +95,14 @@ movie-book-library/
 ### Database Setup
 
 1. Navigate to the `api` directory:
-
-    ```bash
+```bash
     cd api
-    ```
+```
 
 2. Apply database migrations to create the SQLite database:
-
-    ```bash
+```bash
     dotnet ef database update
-    ```
+```
 
     This will create `library.db` with the necessary tables and seed initial data.
 
@@ -115,10 +111,9 @@ movie-book-library/
 #### Backend (API)
 
 1. From the `api` directory:
-
-    ```bash
+```bash
     dotnet run
-    ```
+```
 
 2. The API will be available at:
     - `http://localhost:5000` (HTTP)
@@ -128,22 +123,19 @@ movie-book-library/
 #### Frontend (Client)
 
 1. Navigate to the `client` directory:
-
-    ```bash
+```bash
     cd client
-    ```
+```
 
 2. Install dependencies (first time only):
-
-    ```bash
+```bash
     npm install
-    ```
+```
 
 3. Start the development server:
-
-    ```bash
+```bash
     npm run dev
-    ```
+```
 
 4. Open your browser and navigate to the URL shown in the terminal (typically `http://localhost:5173`)
 
