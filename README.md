@@ -34,11 +34,6 @@ movie-book-library/
 -   **Database:** SQLite + EF Core migrations (auto-applied on container startup)
 -   **Environment Variables:** VITE_API_URL configured in Vercel
 
-## 📸 Screenshots
-
-![Home Page](client/public/screenshots/home-page.png)
-![Library Items](client/public/screenshots/library-items.png)
-
 ## 🛠️ Tech Stack
 
 ### Backend
@@ -54,6 +49,11 @@ movie-book-library/
 -   **Vite** - Build tool and dev server
 -   **React Router** - Client-side routing
 -   **JavaScript** - Frontend implementation
+
+## 📸 Screenshots
+
+![Home Page](client/public/screenshots/home-page.png)
+![Library Items](client/public/screenshots/library-items.png)
 
 ## ✨ Features
 
