@@ -66,16 +66,6 @@ movie-book-library/
 -   **Seeded Data**: Pre-populated with sample items to get you started
 -   **Responsive Design**: Clean, modern UI that works on desktop and mobile devices
 
-## 🎯 Project Highlights
-
--   **Dockerized Backend** - Production-ready containerization with multi-stage builds
--   **Deployed Infrastructure** - Fully deployed frontend (Vercel) and backend (Render)
--   **Modern Frontend** - React 19 with Vite for fast development and optimized builds
--   **Entity Framework Core** - Robust ORM with automatic migrations and database seeding
--   **RESTful API** - Clean, well-structured API with Swagger documentation
--   **Responsive Design** - Mobile-first, modern UI with smooth animations and transitions
--   **Environment Configuration** - Flexible API URL configuration via environment variables
-
 ## 🔌 API Endpoints
 
 -   `GET /api/libraryitems` - Get all items (optional `?type=movie` or `?type=book` filter)
