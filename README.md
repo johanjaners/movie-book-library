@@ -1,6 +1,6 @@
 # Movie / Book Library
 
-A full-stack web application for tracking your personal collection of movies and books. Manage your library with ease, add ratings and notes, and keep track of what you've watched or read.
+A full-stack application demonstrating a RESTful .NET Web API with layered architecture, used to manage a personal library of movies and books.
 
 ## 🚀 Live Demo
 
@@ -37,34 +37,29 @@ movie-book-library/
 ## 🛠️ Tech Stack
 
 ### Backend
-
--   **.NET 8** - ASP.NET Core Web API
--   **Entity Framework Core** - ORM for database operations
--   **SQLite** - Lightweight, file-based database
--   **Swagger/OpenAPI** - API documentation
+- .NET 8 (ASP.NET Core Web API)
+- Entity Framework Core
+- SQLite
+- Swagger / OpenAPI
 
 ### Frontend
-
--   **React 19** - UI library
--   **Vite** - Build tool and dev server
--   **React Router** - Client-side routing
--   **JavaScript** - Frontend implementation
+- React
+- Vite
+- React Router
+- JavaScript
 
 ## 📸 Screenshots
 
 ![Home Page](client/public/screenshots/home-page.png)
 ![Library Items](client/public/screenshots/library-items.png)
 
-## ✨ Features
+## ✨ Key Features
 
--   **Full CRUD Operations**: Create, read, update, and delete library items (movies and books)
--   **Search & Filter**: Search items by title and filter by type (movie/book)
--   **Sorting**: Sort items by title, year, or rating
--   **Cover Images**: Visual cover images for each item with graceful fallback placeholders
--   **Library Statistics**: View total counts of items, movies, and books
--   **Persistent Storage**: SQLite database with Entity Framework Core migrations
--   **Seeded Data**: Pre-populated with sample items to get you started
--   **Responsive Design**: Clean, modern UI that works on desktop and mobile devices
+- RESTful CRUD API for managing movies and books
+- Layered architecture (Controllers, Services, Repositories)
+- Search, filtering, and sorting support
+- Persistent storage with EF Core
+- Seeded development data
 
 ## 🔌 API Endpoints
 
