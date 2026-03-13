@@ -28,17 +28,15 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
 app.UseCors();
 
 app.MapControllers();
+app.MapGet("/", () => "Movie Book Library API is running.");
 
 // Ensure database is created and migrations are applied
 using (var scope = app.Services.CreateScope())
