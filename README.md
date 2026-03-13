@@ -4,8 +4,9 @@ A full-stack application demonstrating a RESTful .NET Web API with layered archi
 
 ## 🚀 Live Demo
 
--   **Frontend:** [https://movie-book-library.vercel.app](https://movie-book-library.vercel.app)
--   **API:** [https://movie-book-library.onrender.com](https://movie-book-library.onrender.com)
+- **Frontend:** https://movie-book-library.vercel.app
+- **API:** https://movie-book-library.onrender.com
+- **Swagger Docs:** https://movie-book-library.onrender.com/swagger
 
 ## 🏗️ Architecture
 
